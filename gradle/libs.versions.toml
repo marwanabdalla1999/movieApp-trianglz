@@ -20,6 +20,7 @@ moshi = "1.15.2"
 coil = "2.7.0"
 mockk = "1.13.12"
 kotlinxCoroutines = "1.10.2"
+okhttp = "4.12.0"
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
@@ -54,10 +55,14 @@ retrofit-moshi = { group = "com.squareup.retrofit2", name = "converter-moshi", v
 coil = { group = "io.coil-kt", name = "coil-compose", version.ref = "coil" }
 mockk = { group = "io.mockk", name = "mockk", version.ref = "mockk" }
 kotlinx-coroutines-test = { group = "org.jetbrains.kotlinx", name = "kotlinx-coroutines-test", version.ref = "kotlinxCoroutines" }
+retrofit-interceptor = { group = "com.squareup.okhttp3", name = "logging-interceptor", version.ref = "okhttp" }
+
+
+
 
 [bundles]
 compose = ["androidx-compose-bom", "androidx-ui", "androidx-ui-graphics", "androidx-ui-tooling", "androidx-ui-tooling-preview", "androidx-material3"]
-networking = ["retrofit", "retrofit-moshi", "moshi"]
+retrofit = ["retrofit", "retrofit-moshi", "moshi", "retrofit-interceptor"]
 
 
 [plugins]
