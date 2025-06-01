@@ -1,0 +1,19 @@
+package com.trianglz.cache.movies
+
+import androidx.room.Dao
+import androidx.room.Insert
+import androidx.room.OnConflictStrategy
+import androidx.room.Query
+import com.trianglz.localDatabase.movies.entities.MovieRemoteKeys
+
+@Dao
+interface MovieRemoteKeysDao {
+    @Query("SELECT * FROM movies_remote_keys WHERE movieId = :movieId")
+    suspend fun remoteKeysByMovieId(movieId: Int): MovieRemoteKeys?
+
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    suspend fun insertAll(keys: List<MovieRemoteKeys>)
+
+    @Query("DELETE FROM movies_remote_keys")
+    suspend fun clearAllRemoteKeys()
+}

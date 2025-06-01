@@ -1,0 +1,20 @@
+package com.trianglz.movies.models.mappers
+
+import com.trianglz.localDatabase.movies.entities.MovieEntity
+import com.trianglz.movies.models.responses.MovieDto
+
+
+fun MovieDto.toEntity(page: Int): MovieEntity = MovieEntity(
+    id = id,
+    title = title,
+    posterPath = posterPath?:"",
+    releaseDate = releaseDate,
+    overview = overview,
+    voteAverage = voteAverage,
+    voteCount = voteCount,
+    popularity = popularity,
+    adult = adult,
+    originalLanguage = originalLanguage,
+    page = page
+)
+
