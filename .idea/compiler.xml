@@ -2,7 +2,14 @@
 <project version="4">
   <component name="CompilerConfiguration">
     <bytecodeTargetLevel target="11">
+      <module name="MoviesApp.core.base" target="21" />
+      <module name="MoviesApp.core.localDatabase" target="21" />
+      <module name="MoviesApp.data.dataSource.remoteService.movies" target="21" />
+      <module name="MoviesApp.data.models.movies" target="21" />
+      <module name="MoviesApp.data.repositories.moviesRepository" target="21" />
+      <module name="MoviesApp.data.services.localDatabaseService" target="21" />
       <module name="MoviesApp.data.services.localDataSourceServices.movies" target="21" />
+      <module name="MoviesApp.data.services.movies" target="21" />
       <module name="MoviesApp.data.services.remoteDataSourceServices.movies" target="21" />
     </bytecodeTargetLevel>
   </component>
