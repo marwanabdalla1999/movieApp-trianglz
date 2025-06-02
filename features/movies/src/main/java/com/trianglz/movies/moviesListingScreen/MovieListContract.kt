@@ -1,4 +1,4 @@
-package com.trianglz.movies
+package com.trianglz.movies.moviesListingScreen
 
 import androidx.paging.PagingData
 import com.trianglz.ui.base.ViewEvent

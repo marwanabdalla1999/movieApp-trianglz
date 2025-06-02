@@ -23,7 +23,7 @@ mockk = "1.13.12"
 kotlinxCoroutines = "1.10.2"
 okhttp = "4.12.0"
 paging = "3.3.6"
-
+composeNavigation = "2.9.0"
 roomPaging = "2.7.1"
 hiltNavigationCompose = "1.2.0"
 
@@ -44,6 +44,8 @@ androidx-ui-test-junit4 = { group = "androidx.compose.ui", name = "ui-test-junit
 androidx-material3 = { group = "androidx.compose.material3", name = "material3" }
 androidx-appcompat = { group = "androidx.appcompat", name = "appcompat", version.ref = "appcompat" }
 material = { group = "com.google.android.material", name = "material", version.ref = "material" }
+compose-navigations = { group = "androidx.navigation", name = "navigation-compose", version.ref = "composeNavigation" }
+
 retrofit = { group = "com.squareup.retrofit2", name = "retrofit", version.ref = "retrofit" }
 
 hilt-android = { group = "com.google.dagger", name = "hilt-android", version.ref = "hilt" }
@@ -84,6 +86,7 @@ retrofit = ["retrofit", "retrofit-moshi", "moshi", "retrofit-interceptor"]
 android-application = { id = "com.android.application", version.ref = "agp" }
 kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
 kotlin-compose = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin" }
+kotlin-serialization = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "kotlin" }
 android-library = { id = "com.android.library", version.ref = "agp" }
 jetbrains-kotlin-jvm = { id = "org.jetbrains.kotlin.jvm", version.ref = "jetbrainsKotlinJvm" }
 hilt-android = { id = "com.google.dagger.hilt.android", version.ref = "hilt" }
