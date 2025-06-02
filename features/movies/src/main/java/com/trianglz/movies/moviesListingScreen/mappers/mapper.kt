@@ -1,4 +1,4 @@
-package com.trianglz.movies.mappers
+package com.trianglz.movies.moviesListingScreen.mappers
 
 import com.trianglz.movies.models.MovieDomainModel
 import com.trianglz.ui.uiModels.AppMoviesModel

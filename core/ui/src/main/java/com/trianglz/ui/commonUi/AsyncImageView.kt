@@ -5,6 +5,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
+import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
@@ -64,7 +65,7 @@ fun AsyncImageView(
                     painter = painter,
                     contentDescription = contentDescription,
                     contentScale = contentScale,
-                    modifier = Modifier.size(30.dp)
+                    modifier = modifier.clip(RoundedCornerShape(20.dp))
                 )
             }
         }

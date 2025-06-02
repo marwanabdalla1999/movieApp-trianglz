@@ -1,4 +1,4 @@
-package com.trianglz.movies.di
+package com.trianglz.movies.moviesListingScreen.di
 
 import com.trianglz.movies.repositories.IMoviesRepository
 import com.trianglz.movies.usecase.GetMoviesUseCaseImpl

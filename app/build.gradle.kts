@@ -51,6 +51,7 @@ dependencies {
     implementation(libs.androidx.ui.graphics)
     implementation(libs.androidx.ui.tooling.preview)
     implementation(libs.androidx.material3)
+    implementation(libs.compose.navigations)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
@@ -61,6 +62,7 @@ dependencies {
 
 
     implementation(project(":features:movies"))
+    implementation(project(":core:ui"))
 
     implementation(project(":domain:movies")){
         exclude(group = "androidx.paging", module = "paging-common-jvm")

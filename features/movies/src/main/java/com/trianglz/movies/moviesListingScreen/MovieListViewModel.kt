@@ -1,9 +1,9 @@
-package com.trianglz.movies
+package com.trianglz.movies.moviesListingScreen
 
 import androidx.lifecycle.viewModelScope
 import androidx.paging.cachedIn
 import androidx.paging.map
-import com.trianglz.movies.mappers.toAppUiModel
+import com.trianglz.movies.moviesListingScreen.mappers.toAppUiModel
 import com.trianglz.movies.usecase.IGetMoviesUseCase
 import com.trianglz.ui.base.BaseViewModel
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -25,7 +25,7 @@ class MovieListViewModel @Inject constructor(
             val moviesFlow = getMoviesUseCase()
                 .catch {
                     setState { copy(isLoading = false) }
-                    setEffect {MovieListEffects.Errors.GenericError(it.message?:"")}
+                    setEffect { MovieListEffects.Errors.GenericError(it.message ?: "") }
                 }
                 .map { it.map { movie -> movie.toAppUiModel() } }
                 .cachedIn(viewModelScope)
