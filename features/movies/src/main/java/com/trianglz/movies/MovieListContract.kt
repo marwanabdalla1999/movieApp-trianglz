@@ -1,17 +1,28 @@
 package com.trianglz.movies
 
+import androidx.paging.PagingData
+import com.trianglz.ui.base.ViewEvent
+import com.trianglz.ui.base.ViewSideEffect
+import com.trianglz.ui.base.ViewState
+import com.trianglz.ui.uiModels.AppMoviesModel
+import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.flowOf
 
-sealed class MovieListIntent {
-    object LoadMovies : MovieListIntent()
-    data class SearchMovies(val query: String) : MovieListIntent()
-}
 
 data class MovieListState(
-    val movies: List<Movie> = emptyList(),
+    val movies: Flow<PagingData<AppMoviesModel>> = flowOf(PagingData.empty()),
     val isLoading: Boolean = false,
-    val error: String? = null
-)
+    val isLoadingMore:Boolean = false,
+    val query: String = "",
+):ViewState
 
-sealed class MovieListEvent {
-    data class ShowError(val message: String) : MovieListEvent()
-} 
+sealed class MovieListEvents:ViewEvent {
+    data object LoadMovies : MovieListEvents()
+    data class SearchMovies(val query: String) : MovieListEvents()
+}
+
+sealed class MovieListEffects:ViewSideEffect {
+    sealed class Errors: MovieListEffects() {
+        data class GenericError(val message: String) : Errors()
+    }
+}

@@ -1,58 +1,105 @@
-package com.example.features.movielist
+package com.trianglz.movies
 
-import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
-import androidx.compose.material.*
-import androidx.compose.runtime.Composable
-import androidx.compose.runtime.collectAsState
-import androidx.compose.runtime.getValue
+import androidx.compose.material3.*
+import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.layout.ContentScale
-import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
-import com.example.domain.model.Movie
 import androidx.hilt.navigation.compose.hiltViewModel
-import androidx.compose.ui.tooling.preview.Preview
-import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.Text
-import androidx.compose.material3.Card
-import androidx.compose.material3.CircularProgressIndicator
+import androidx.lifecycle.compose.collectAsStateWithLifecycle
+import androidx.paging.compose.collectAsLazyPagingItems
+import androidx.paging.LoadState
+import com.trianglz.ui.commonUi.AsyncImageView
+import com.trianglz.ui.uiModels.AppMoviesModel
 
 @Composable
-fun MovieListScreen(viewModel: MovieListViewModel) {
-    val state by viewModel.state.collectAsState()
+fun MovieListScreen(modifier: Modifier = Modifier,viewModel: MovieListViewModel = hiltViewModel()) {
+    val state by viewModel.viewState.collectAsStateWithLifecycle()
+    val movies = state.movies.collectAsLazyPagingItems()
 
-    Column(modifier = Modifier.fillMaxSize()) {
-        if (state.isLoading) {
-            CircularProgressIndicator(modifier = Modifier.align(Alignment.CenterHorizontally))
-        }
+    Box(modifier = modifier.fillMaxSize()) {
+        when (movies.loadState.refresh) {
+            is LoadState.Loading -> {
+                CircularProgressIndicator(modifier = Modifier.align(Alignment.Center))
+            }
 
-        LazyColumn(modifier = Modifier.fillMaxSize()) {
-            items(state.movies) { movie ->
-                MovieItem(movie = movie)
+            is LoadState.Error -> {
+                val error = (movies.loadState.refresh as LoadState.Error).error
+                Text(
+                    text = "Error loading movies: ${error.message ?: "Unknown error"}",
+                    color = MaterialTheme.colorScheme.error,
+                    modifier = Modifier.align(Alignment.Center)
+                )
+            }
+
+            else -> {
+                LazyColumn(modifier = Modifier.fillMaxSize()) {
+                    items(movies.itemSnapshotList.items) { movie ->
+                        MovieItem(movie)
+                    }
+
+                    when (movies.loadState.append) {
+                        is LoadState.Loading -> item { LoadingMoreItem() }
+                        is LoadState.Error -> item { LoadMoreErrorItem { movies.retry() } }
+                        else -> Unit
+                    }
+                }
             }
         }
     }
 }
 
 @Composable
-fun MovieItem(movie: Movie) {
-    Card(modifier = Modifier.fillMaxWidth().padding(8.dp)) {
+fun MovieItem(movie: AppMoviesModel) {
+    Card(
+        modifier = Modifier
+            .fillMaxWidth()
+            .padding(horizontal = 16.dp, vertical = 4.dp),
+        shape = MaterialTheme.shapes.medium,
+        elevation = CardDefaults.cardElevation(defaultElevation = 4.dp)
+    ) {
         Row(modifier = Modifier.padding(8.dp)) {
-            Image(
-                painter = painterResource(id = movie.posterResourceId),
-                contentDescription = null,
-                modifier = Modifier.size(64.dp),
-                contentScale = ContentScale.Crop
+            AsyncImageView(
+                imageUrl = movie.poster, modifier = Modifier.size(80.dp)
             )
             Spacer(modifier = Modifier.width(8.dp))
-            Column {
-                Text(text = movie.title, style = MaterialTheme.typography.h6)
-                Text(text = "Release Year: ${movie.releaseYear}", style = MaterialTheme.typography.body2)
+            Column(
+                verticalArrangement = Arrangement.Center,
+                modifier = Modifier.align(Alignment.CenterVertically)
+            ) {
+                Text(text = movie.title, style = MaterialTheme.typography.titleMedium)
+                Text(
+                    text = "Release Year: ${movie.releaseDate}",
+                    style = MaterialTheme.typography.bodyMedium
+                )
             }
         }
     }
-} 
+}
+
+@Composable
+fun LoadingMoreItem() {
+    Box(
+        modifier = Modifier
+            .fillMaxWidth()
+            .padding(16.dp)
+    ) {
+        CircularProgressIndicator(modifier = Modifier.align(Alignment.Center))
+    }
+}
+
+@Composable
+fun LoadMoreErrorItem(onRetry: () -> Unit) {
+    Box(
+        modifier = Modifier
+            .fillMaxWidth()
+            .padding(16.dp)
+    ) {
+        TextButton(onClick = onRetry, modifier = Modifier.align(Alignment.Center)) {
+            Text(text = "Retry Loading More")
+        }
+    }
+}

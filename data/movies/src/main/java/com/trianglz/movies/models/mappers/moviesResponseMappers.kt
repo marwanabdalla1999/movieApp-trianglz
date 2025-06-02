@@ -1,6 +1,6 @@
 package com.trianglz.movies.models.mappers
 
-import com.trianglz.localDatabase.movies.entities.MovieEntity
+import com.trianglz.cache.movies.entities.MovieEntity
 import com.trianglz.movies.models.responses.MovieDto
 
 

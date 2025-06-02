@@ -5,5 +5,7 @@ object NetworkConstants {
 
     object Headers {
         const val AUTHORIZATION = "Authorization"
+        const val API_TOKEN = BuildConfig.USER_TOKEN
+
     }
 }

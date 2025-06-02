@@ -1,4 +1,4 @@
-package com.trianglz.localDatabase.dataBase
+package com.trianglz.cache.dataBase
 
 import android.content.Context
 import androidx.room.Database
@@ -6,9 +6,8 @@ import androidx.room.Room
 import androidx.room.RoomDatabase
 import com.trianglz.cache.movies.MovieRemoteKeysDao
 import com.trianglz.cache.movies.MoviesDao
-import com.trianglz.localDatabase.movies.MoviesDao
-import com.trianglz.localDatabase.movies.entities.MovieEntity
-import com.trianglz.localDatabase.movies.entities.MovieRemoteKeys
+import com.trianglz.cache.movies.entities.MovieEntity
+import com.trianglz.cache.movies.entities.MovieRemoteKeys
 
 @Database(
     entities = [MovieEntity::class, MovieRemoteKeys::class],

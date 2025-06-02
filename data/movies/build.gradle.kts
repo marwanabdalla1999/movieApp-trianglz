@@ -2,6 +2,7 @@ plugins {
     alias(libs.plugins.android.library)
     alias(libs.plugins.kotlin.android)
     alias(libs.plugins.ksp)
+    alias(libs.plugins.hilt.android)
 }
 
 android {
@@ -25,11 +26,11 @@ android {
         }
     }
     compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_11
-        targetCompatibility = JavaVersion.VERSION_11
+        sourceCompatibility = JavaVersion.VERSION_17
+        targetCompatibility = JavaVersion.VERSION_17
     }
     kotlinOptions {
-        jvmTarget = "11"
+        jvmTarget = "17"
     }
 }
 
@@ -43,9 +44,15 @@ dependencies {
     ksp(libs.moshi.codegen)
     implementation(libs.retrofit)
     implementation(libs.androidx.room.paging)
+    implementation(libs.hilt.android)
+    ksp(libs.hilt.compiler)
     implementation(project(":core:network"))
     implementation(project(":core:cache"))
-    implementation(project(":domain:movies"))
+
+    implementation(project(":domain:movies")){
+        exclude(group = "androidx.paging", module = "paging-common-jvm")
+    }
+
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)

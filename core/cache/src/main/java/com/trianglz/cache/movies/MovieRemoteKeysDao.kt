@@ -4,7 +4,7 @@ import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
-import com.trianglz.localDatabase.movies.entities.MovieRemoteKeys
+import com.trianglz.cache.movies.entities.MovieRemoteKeys
 
 @Dao
 interface MovieRemoteKeysDao {

@@ -1,4 +1,4 @@
-package com.trianglz.localDatabase.movies.entities
+package com.trianglz.cache.movies.entities
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey
@@ -17,7 +17,6 @@ data class MovieEntity(
     val originalLanguage: String,
     val page: Int
 )
-
 
 @Entity(tableName = "movies_remote_keys")
 data class MovieRemoteKeys(
