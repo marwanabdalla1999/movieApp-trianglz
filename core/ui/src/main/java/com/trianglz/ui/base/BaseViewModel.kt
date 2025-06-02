@@ -2,7 +2,7 @@ package com.trianglz.ui.base
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.core_ui.utils.safeCollect
+import com.trianglz.ui.utils.safeCollect
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.channels.Channel
@@ -19,8 +19,11 @@ import kotlinx.coroutines.flow.receiveAsFlow
 import kotlinx.coroutines.launch
 
 
-abstract class BaseViewModel<UiState : ViewState, Event : ViewEvent, Effect : ViewSideEffect> :
-    ViewModel() {
+abstract class BaseViewModel<
+    UiState : ViewState,
+    Event : ViewEvent,
+    Effect : ViewSideEffect
+> : ViewModel() {
 
     protected abstract fun setInitialState(): UiState
 

@@ -6,18 +6,16 @@ import androidx.paging.PagingConfig
 import androidx.paging.PagingData
 import androidx.paging.map
 import com.trianglz.movies.repositories.IMoviesRepository
-import com.trianglz.localDatabase.dataBase.AppDatabase
+import com.trianglz.cache.dataBase.AppDatabase
 import com.trianglz.movies.localDataSource.ILocalMoviesDataSource
 import com.trianglz.movies.models.MovieDomainModel
 import com.trianglz.movies.models.mappers.toDomain
-import com.trianglz.movies.models.responses.MovieDto
 import com.trianglz.movies.pagingMediator.MoviesRemoteMediator
 import com.trianglz.movies.remoteDataSource.IMoviesRemoteDataSource
 import kotlinx.coroutines.flow.Flow
-import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.map
 
-class MovieRepositoryImpl(
+class MovieRepositoryImpl (
     private val remoteDataSource: IMoviesRemoteDataSource,
     private val localMoviesDataSourceImpl: ILocalMoviesDataSource,
     private val database: AppDatabase

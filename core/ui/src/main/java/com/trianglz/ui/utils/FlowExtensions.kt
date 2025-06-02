@@ -1,4 +1,4 @@
-package com.core_ui.utils
+package com.trianglz.ui.utils
 
 import kotlinx.coroutines.ensureActive
 import kotlinx.coroutines.flow.Flow

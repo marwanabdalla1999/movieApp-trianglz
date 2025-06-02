@@ -6,7 +6,7 @@ import com.trianglz.movies.repositories.IMoviesRepository
 import kotlinx.coroutines.flow.Flow
 
 
-class GetMoviesUseCase(private val movieRepository: IMoviesRepository):IGetMoviesUseCase {
+class GetMoviesUseCaseImpl(private val movieRepository: IMoviesRepository):IGetMoviesUseCase {
     override suspend operator fun invoke(): Flow<PagingData<MovieDomainModel>> {
         return movieRepository.getMovies()
     }

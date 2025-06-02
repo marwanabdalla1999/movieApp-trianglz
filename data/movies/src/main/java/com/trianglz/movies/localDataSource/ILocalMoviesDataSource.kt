@@ -1,9 +1,9 @@
 package com.trianglz.movies.localDataSource
 
 import androidx.paging.PagingSource
-import com.trianglz.localDatabase.movies.entities.MovieEntity
-import com.trianglz.localDatabase.movies.entities.MovieRemoteKeys
-import kotlinx.coroutines.flow.Flow
+import com.trianglz.cache.movies.entities.MovieEntity
+import com.trianglz.cache.movies.entities.MovieRemoteKeys
+
 
 interface ILocalMoviesDataSource {
 

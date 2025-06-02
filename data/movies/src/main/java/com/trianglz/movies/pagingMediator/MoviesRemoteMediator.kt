@@ -5,9 +5,9 @@ import androidx.paging.LoadType
 import androidx.paging.PagingState
 import androidx.paging.RemoteMediator
 import androidx.room.withTransaction
-import com.trianglz.localDatabase.dataBase.AppDatabase
-import com.trianglz.localDatabase.movies.entities.MovieEntity
-import com.trianglz.localDatabase.movies.entities.MovieRemoteKeys
+import com.trianglz.cache.dataBase.AppDatabase
+import com.trianglz.cache.movies.entities.MovieEntity
+import com.trianglz.cache.movies.entities.MovieRemoteKeys
 import com.trianglz.movies.localDataSource.ILocalMoviesDataSource
 import com.trianglz.movies.models.mappers.toEntity
 import com.trianglz.movies.remoteDataSource.IMoviesRemoteDataSource

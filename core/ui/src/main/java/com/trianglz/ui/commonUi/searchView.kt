@@ -15,7 +15,7 @@ import androidx.compose.ui.platform.LocalSoftwareKeyboardController
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.tooling.preview.Preview
-import com.example.core_ui.R
+import com.trianglz.ui.R
 
 @Composable
 fun SearchView(
@@ -30,7 +30,7 @@ fun SearchView(
         onValueChange = {
             onQueryChanged(it)
         },
-        placeholder = { Text(stringResource(R.string.search)) },
+        placeholder = { Text("Search") },
         singleLine = true,
         modifier = modifier,
         keyboardOptions = KeyboardOptions.Default.copy(
