@@ -48,13 +48,8 @@ dependencies {
     androidTestImplementation(libs.androidx.espresso.core)
 
     implementation(project(":core:ui"))
-    implementation(project(":domain:movies")){
-        exclude(group = "androidx.paging", module = "paging-common-jvm")
-    }
+    implementation(project(":domain:movies"))
 
-    implementation(project(":core:network"))
-    implementation(project(":core:cache"))
-    implementation(project(":data:movies"))
 
     implementation(libs.hilt.navigation.compose)
 

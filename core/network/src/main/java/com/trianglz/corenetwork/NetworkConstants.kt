@@ -8,4 +8,9 @@ object NetworkConstants {
         const val API_TOKEN = BuildConfig.USER_TOKEN
 
     }
+    object Paging {
+         const val PAGE_SIZE = 20
+        const val PREFETCH_DISTANCE = 40
+
+    }
 }

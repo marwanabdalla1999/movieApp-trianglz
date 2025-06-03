@@ -5,6 +5,7 @@ import com.trianglz.ui.uiModels.AppMoviesModel
 
 
 fun MovieDomainModel.toAppUiModel() = AppMoviesModel(
+    id = id,
     title = title,
     poster = posterPath,
     releaseDate = releaseDate,
