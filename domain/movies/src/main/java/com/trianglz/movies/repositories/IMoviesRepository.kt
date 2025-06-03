@@ -5,6 +5,8 @@ import com.trianglz.movies.models.MovieDomainModel
 import kotlinx.coroutines.flow.Flow
 
 interface IMoviesRepository {
-   suspend fun getMovies(): Flow<PagingData<MovieDomainModel>>
+   fun getMovies(): Flow<PagingData<MovieDomainModel>>
+
+   suspend  fun searchForMovies(query: String): Flow<PagingData<MovieDomainModel>>
 
 } 

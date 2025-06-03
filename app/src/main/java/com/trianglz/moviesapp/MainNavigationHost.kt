@@ -1,5 +1,6 @@
 package com.trianglz.moviesapp
 
+import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.navigation.NavHostController
@@ -17,7 +18,7 @@ fun NavigationHost(
         navController = navController, startDestination = MoviesListing, modifier = modifier
     ) {
 
-        moviesListingRoute(modifier = modifier)
+        moviesListingRoute()
 
 
     }

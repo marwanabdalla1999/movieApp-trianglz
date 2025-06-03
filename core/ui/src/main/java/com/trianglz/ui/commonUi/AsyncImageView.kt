@@ -19,12 +19,14 @@ import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Text
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.res.painterResource
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import coil3.compose.AsyncImagePainter
 import coil3.compose.rememberAsyncImagePainter
 import coil3.request.ImageRequest
 import coil3.request.crossfade
 import coil3.size.Scale
+import com.trianglz.ui.R
 
 @Composable
 fun AsyncImageView(
@@ -32,7 +34,7 @@ fun AsyncImageView(
     modifier: Modifier = Modifier,
     contentDescription: String? = null,
     contentScale: ContentScale = ContentScale.Crop,
-    shape: androidx.compose.ui.graphics.Shape = CircleShape
+    shape: androidx.compose.ui.graphics.Shape = RoundedCornerShape(20.dp)
 ) {
     val painter = rememberAsyncImagePainter(
         model = ImageRequest.Builder(LocalContext.current).data(imageUrl).crossfade(true)
@@ -51,13 +53,20 @@ fun AsyncImageView(
             is AsyncImagePainter.State.Loading -> {
                 CircularProgressIndicator(
                     modifier = Modifier
-                        .size(16.dp)
-                        .padding(8.dp), strokeWidth = 2.dp
+                        .padding(8.dp)
+                        .size(50.dp)
+                        , strokeWidth = 2.dp
                 )
             }
 
             is AsyncImagePainter.State.Error -> {
-                Text(text = "Error Image Can't loaded")
+                Image(
+                    painter = painterResource(R.drawable.error),
+                    contentDescription = contentDescription,
+                    contentScale = contentScale,
+                    modifier = modifier.clip(shape)
+
+                )
             }
 
             else -> {
@@ -65,7 +74,7 @@ fun AsyncImageView(
                     painter = painter,
                     contentDescription = contentDescription,
                     contentScale = contentScale,
-                    modifier = modifier.clip(RoundedCornerShape(20.dp))
+                    modifier = modifier.clip(shape)
                 )
             }
         }

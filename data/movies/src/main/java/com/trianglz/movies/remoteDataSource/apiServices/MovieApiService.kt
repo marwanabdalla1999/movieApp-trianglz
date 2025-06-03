@@ -1,6 +1,8 @@
 package com.trianglz.movies.remoteDataSource.apiServices
 
+import androidx.paging.PagingSource
 import com.trianglz.corenetwork.NetworkConstants
+import com.trianglz.movies.models.responses.MovieDto
 import com.trianglz.movies.models.responses.MoviesResponse
 import retrofit2.Response
 import retrofit2.http.GET
@@ -14,13 +16,13 @@ interface MovieApiService {
     suspend fun getMovies(
         @Query("page") page: Int,
         @Query("page_size") pageSize: Int = 20
-    ): Response<MoviesResponse>
+    ): Response<MoviesResponse?>
 
 
-    @GET("/search")
+    @GET("search/movie")
     suspend fun searchMovies(
         @Query("query") query: String, @Query("page") page: Int = 1
-    ): MoviesResponse
+    ): Response<MoviesResponse?>
 
 
     @GET("/movie/{movieId}")
