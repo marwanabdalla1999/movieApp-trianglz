@@ -1,24 +1,22 @@
 object Modules {
-    // Core modules
-    const val CORE_BASE = ":core:base"
-    const val CORE_NETWORK = ":core:network"
-    const val CORE_UI = ":core:ui"
-    const val CORE_CASHING = ":core:cashing"
+    const val APP = ":app"
 
-    const val CORE_LOCAL_DATABASE = ":core:localDatabase"
+    object Features {
+        const val MOVIES = ":features:movies"
+    }
 
-    // Data source
-    const val DATA_REPOSITORIES = ":data:repositories"
+    object Domain {
+        const val MOVIES = ":domain:movies"
+    }
 
-    const val SERVICE_MOVIES = ":data:services:remoteService:movies"
+    object Data {
+        const val MOVIES = ":data:movies"
+    }
 
-
-    //Domain modules
-    const val DOMAIN_MOVIES = ":domain:movies"
-
-
-    // Feature modules
-    const val FEATURES_MOVIES = ":features:movies"
-
-
+    object Core {
+        const val NETWORK = ":core:network"
+        const val CACHE = ":core:cache"
+        const val UI = ":core:ui"
+    }
 }
+

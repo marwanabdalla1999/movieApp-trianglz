@@ -1,3 +1,6 @@
+import java.io.FileInputStream
+import java.util.Properties
+
 plugins {
     alias(libs.plugins.android.library)
     alias(libs.plugins.kotlin.android)
@@ -7,20 +10,17 @@ plugins {
 
 android {
     namespace = "com.trianglz.corenetwork"
-    compileSdk = 34
+    compileSdk = VersionManger.COMPILE_SDK
 
     defaultConfig {
-        minSdk = 29
+        minSdk = VersionManger.MIN_SDK
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles("consumer-rules.pro")
 
         buildConfigField("String", "BASE_URL", "\"https://api.themoviedb.org/3/\"")
-        buildConfigField(
-            "String",
-            "USER_TOKEN",
-            "\"Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI1YzQ2OTJkYTZjM2Y5MDE3ODlhZGNhZTJlYzNkNGVhZCIsIm5iZiI6MTc0ODM0NzUxMi4xODcsInN1YiI6IjY4MzVhYTc4ODZhYTU0YzdjMGE4NzM4MiIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.gnaWwjVz7LXBQ-yj7iqDyaoVDC752SqpCqQYAucGIv8\""
-        )
+        val token = project.findProperty("tmdb_user_token") as? String ?: ""
+        buildConfigField("String", "USER_TOKEN", "\"Bearer $token\"")
     }
 
     buildTypes {
