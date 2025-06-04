@@ -12,11 +12,13 @@ import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.tooling.preview.Preview
 
 import androidx.compose.ui.unit.dp
 import com.trianglz.movies.moviesDetailsScreen.composables.MovieDetailsContent
 import com.trianglz.ui.commonUi.LocalAppSnackBarHostState
 import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.flowOf
 
 
 @Composable
@@ -72,4 +74,10 @@ fun MovieDetailsScreen(
             }
         }
     }
+}
+
+@Preview
+@Composable
+fun MovieDetailsScreenPreview(){
+    MovieDetailsScreen(movieId = 1, state = MoviesDetailsState.Ideal, setEvents = {}, effects = flowOf(), onBackClick = {})
 }

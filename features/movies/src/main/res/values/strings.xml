@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="release">Release: %1$s</string>
+    <string name="no_results_found">No results found</string>
+    <string name="retry_loading_more">Retry Loading More</string>
+    <string name="back">Back</string>
+</resources>
