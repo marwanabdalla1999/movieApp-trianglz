@@ -4,7 +4,6 @@ import androidx.paging.PagingData
 import com.trianglz.movies.models.MovieDomainModel
 import com.trianglz.movies.usecase.popularMoviesUseCase.IGetPopularMoviesUseCase
 import com.trianglz.movies.usecase.searchForMovieUseCase.ISearchForMoviesUseCase
-import com.trianglz.ui.uiModels.AppMoviesModel
 import io.mockk.coEvery
 import io.mockk.coVerify
 import io.mockk.mockk

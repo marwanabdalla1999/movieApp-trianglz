@@ -3,7 +3,7 @@ package com.trianglz.movies.di
 import com.trianglz.cache.dataBase.AppDatabase
 import com.trianglz.movies.remoteDataSource.IMoviesRemoteDataSource
 import com.trianglz.movies.remoteDataSource.MoviesRemoteDataSourceImpl
-import com.trianglz.movies.remoteDataSource.apiServices.MovieApiService
+import com.trianglz.movies.apiServices.MovieApiService
 import com.trianglz.movies.repositories.IMoviesRepository
 import com.trianglz.movies.repository.MovieRepositoryImpl
 import dagger.Binds

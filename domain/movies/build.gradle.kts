@@ -15,5 +15,11 @@ kotlin {
 }
 
 dependencies {
-    implementation(libs.androidx.paging.common)
+    implementation(libs.paging.common)
+
+    testImplementation(libs.paging.test)
+    testImplementation(libs.paging.common)
+    testImplementation(libs.junit)
+    testImplementation(libs.mockk)
+    testImplementation(libs.kotlinx.coroutines.test)
 }

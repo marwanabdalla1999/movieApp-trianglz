@@ -10,11 +10,11 @@ import androidx.paging.LoadState
 import androidx.paging.compose.LazyPagingItems
 import com.trianglz.movies.moviesListingScreen.MovieListEvents
 import com.trianglz.ui.commonUi.MovieItem
-import com.trianglz.ui.uiModels.AppMoviesModel
+import com.trianglz.ui.models.AppMovieModel
 
 @Composable
 fun MoviesListing(
-    movies: LazyPagingItems<AppMoviesModel>,
+    movies: LazyPagingItems<AppMovieModel>,
     state: LazyListState = rememberLazyListState(),
     setEvents: (MovieListEvents) -> Unit
 ) {

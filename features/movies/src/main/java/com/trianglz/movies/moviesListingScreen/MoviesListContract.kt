@@ -4,16 +4,15 @@ import androidx.paging.PagingData
 import com.trianglz.ui.base.ViewEvent
 import com.trianglz.ui.base.ViewSideEffect
 import com.trianglz.ui.base.ViewState
-import com.trianglz.ui.uiModels.AppMoviesModel
+import com.trianglz.ui.models.AppMovieModel
 import kotlinx.coroutines.flow.Flow
-import kotlinx.coroutines.flow.flowOf
 
 
 sealed class MovieListState:ViewState {
     data object Ideal : MovieListState()
     data class Success(
-        val movies: Flow<PagingData<AppMoviesModel>>,
-        val searchedMovieList: Flow<PagingData<AppMoviesModel>>,
+        val movies: Flow<PagingData<AppMovieModel>>,
+        val searchedMovieList: Flow<PagingData<AppMovieModel>>,
         val query: String
     ) : MovieListState()
 }
