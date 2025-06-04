@@ -1,4 +1,4 @@
-package com.trianglz.movies.apiServices
+package com.trianglz.movies.remoteDataSource.apiServices
 
 import androidx.paging.PagingSource
 import com.trianglz.corenetwork.NetworkConstants

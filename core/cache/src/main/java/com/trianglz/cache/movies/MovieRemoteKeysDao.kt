@@ -8,8 +8,8 @@ import com.trianglz.cache.movies.entities.MovieRemoteKeys
 
 @Dao
 interface MovieRemoteKeysDao {
-    @Query("SELECT * FROM movies_remote_keys WHERE movieId = :movieId")
-    suspend fun remoteKeysByMovieId(movieId: Int): MovieRemoteKeys?
+    @Query("SELECT * FROM movies_remote_keys ORDER BY nextPage DESC LIMIT 1")
+    suspend fun getLastRemoteKey(): MovieRemoteKeys?
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertAll(keys: List<MovieRemoteKeys>)

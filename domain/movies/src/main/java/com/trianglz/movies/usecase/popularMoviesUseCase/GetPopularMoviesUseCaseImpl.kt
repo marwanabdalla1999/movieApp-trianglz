@@ -8,7 +8,7 @@ import kotlinx.coroutines.flow.Flow
 
 class GetPopularMoviesUseCaseImpl(private val movieRepository: IMoviesRepository):
     IGetPopularMoviesUseCase {
-    override suspend operator fun invoke(): Flow<PagingData<MovieDomainModel>> {
+    override operator fun invoke(): Flow<PagingData<MovieDomainModel>> {
         return movieRepository.getMovies()
     }
 } 
