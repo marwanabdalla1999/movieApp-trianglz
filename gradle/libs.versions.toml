@@ -26,6 +26,8 @@ paging = "3.3.6"
 composeNavigation = "2.9.0"
 roomPaging = "2.7.1"
 hiltNavigationCompose = "1.2.0"
+turbine = "1.0.0"
+
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
@@ -51,9 +53,6 @@ retrofit = { group = "com.squareup.retrofit2", name = "retrofit", version.ref = 
 hilt-android = { group = "com.google.dagger", name = "hilt-android", version.ref = "hilt" }
 hilt-compiler = { group = "com.google.dagger", name = "hilt-compiler", version.ref = "hilt" }
 kotlinx-coroutines-core = { group = "org.jetbrains.kotlinx", name = "kotlinx-coroutines-core", version.ref = "coroutines" }
-ksp = { group = "com.google.devtools.ksp", name = "symbol-processing-api", version.ref = "ksp" }
-kotlinx-coroutines = { group = "org.jetbrains.kotlinx", name = "kotlinx-coroutines-android", version.ref = "kotlinxCoroutines" }
-mockk-android = { module = "io.mockk:mockk-android", version.ref = "mockk" }
 moshi = { group = "com.squareup.moshi", name = "moshi-kotlin", version.ref = "moshi" }
 moshi-codegen = { group = "com.squareup.moshi", name = "moshi-kotlin-codegen", version.ref = "moshi" }
 retrofit-moshi = { group = "com.squareup.retrofit2", name = "converter-moshi", version.ref = "retrofit" }
@@ -62,6 +61,7 @@ coil-okhttp = { group = "io.coil-kt.coil3", name="coil-network-okhttp", version.
 mockk = { group = "io.mockk", name = "mockk", version.ref = "mockk" }
 kotlinx-coroutines-test = { group = "org.jetbrains.kotlinx", name = "kotlinx-coroutines-test", version.ref = "kotlinxCoroutines" }
 retrofit-interceptor = { group = "com.squareup.okhttp3", name = "logging-interceptor", version.ref = "okhttp" }
+turbine = { module = "app.cash.turbine:turbine", version.ref = "turbine" }
 
 
 room-runtime = { group = "androidx.room", name = "room-runtime", version.ref = "room" }
@@ -70,6 +70,7 @@ room-ktx = { group = "androidx.room", name = "room-ktx", version.ref = "room" }
 androidx-room-paging = { module = "androidx.room:room-paging", version.ref = "roomPaging" }
 
 paging = {group = "androidx.paging", name = "paging-runtime-ktx", version.ref = "paging" }
+paging-test = { group = "androidx.paging", name = "paging-testing", version.ref = "paging" }
 pagination-compose = { module = "androidx.paging:paging-compose", version.ref = "paging" }
 androidx-paging-common = { group = "androidx.paging", name = "paging-common", version.ref = "paging" }
 
@@ -80,6 +81,9 @@ hilt-navigation-compose = { group = "androidx.hilt", name = "hilt-navigation-com
 [bundles]
 compose = [ "androidx-ui", "androidx-ui-graphics", "androidx-ui-tooling", "androidx-ui-tooling-preview", "androidx-material3"]
 retrofit = ["retrofit", "retrofit-moshi", "moshi", "retrofit-interceptor"]
+unit-testing = ["junit","mockk","kotlinx-coroutines-test","turbine"]
+
+
 
 
 [plugins]

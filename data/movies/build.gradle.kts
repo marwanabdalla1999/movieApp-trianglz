@@ -49,11 +49,11 @@ dependencies {
     implementation(project(":core:network"))
     implementation(project(":core:cache"))
 
-    implementation(project(":domain:movies")){
-        exclude(group = "androidx.paging", module = "paging-common-jvm")
-    }
+    implementation(project(":domain:movies"))
 
-    testImplementation(libs.junit)
+    testImplementation(libs.bundles.unit.testing)
+    testImplementation(libs.androidx.paging.common)
+    testImplementation(libs.paging.test)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
 }

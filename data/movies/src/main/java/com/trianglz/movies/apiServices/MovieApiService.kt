@@ -1,4 +1,4 @@
-package com.trianglz.movies.remoteDataSource.apiServices
+package com.trianglz.movies.apiServices
 
 import androidx.paging.PagingSource
 import com.trianglz.corenetwork.NetworkConstants
@@ -25,7 +25,7 @@ interface MovieApiService {
     ): Response<MoviesResponse?>
 
 
-    @GET("/movie/{movieId}")
-    suspend fun getMovieDetails(@Path("movieId") movieId: Int): MoviesResponse
+    @GET("movie/{movieId}")
+    suspend fun getMovieDetails(@Path("movieId") movieId: Int): Response<MovieDto?>
 
 } 

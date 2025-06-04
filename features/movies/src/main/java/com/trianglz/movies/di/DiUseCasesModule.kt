@@ -1,6 +1,8 @@
-package com.trianglz.movies.moviesListingScreen.di
+package com.trianglz.movies.di
 
 import com.trianglz.movies.repositories.IMoviesRepository
+import com.trianglz.movies.usecase.movieDetailsUseCase.IMovieDetailsUseCase
+import com.trianglz.movies.usecase.movieDetailsUseCase.MovieDetailsUseCaseImpl
 import com.trianglz.movies.usecase.popularMoviesUseCase.GetPopularMoviesUseCaseImpl
 import com.trianglz.movies.usecase.popularMoviesUseCase.IGetPopularMoviesUseCase
 import com.trianglz.movies.usecase.searchForMovieUseCase.ISearchForMoviesUseCase
@@ -26,4 +28,10 @@ object DiUseCasesModule {
     @Provides
     fun provideSearchForMoviesUseCase(moviesRepository: IMoviesRepository): ISearchForMoviesUseCase =
         SearchForMoviesUseCaseImpl(moviesRepository)
+
+
+    @Singleton
+    @Provides
+    fun provideMovieDetailsUseCase(moviesRepository: IMoviesRepository): IMovieDetailsUseCase =
+        MovieDetailsUseCaseImpl(moviesRepository)
 }

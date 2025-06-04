@@ -8,6 +8,8 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.ui.Alignment
@@ -33,8 +35,7 @@ fun AsyncImageView(
     imageUrl: String,
     modifier: Modifier = Modifier,
     contentDescription: String? = null,
-    contentScale: ContentScale = ContentScale.Crop,
-    shape: androidx.compose.ui.graphics.Shape = RoundedCornerShape(20.dp)
+    contentScale: ContentScale = ContentScale.Crop
 ) {
     val painter = rememberAsyncImagePainter(
         model = ImageRequest.Builder(LocalContext.current).data(imageUrl).crossfade(true)
@@ -44,9 +45,7 @@ fun AsyncImageView(
     val painterState = painter.state.collectAsStateWithLifecycle()
 
     Box(
-        modifier = modifier
-            .clip(shape),
-        contentAlignment = Alignment.Center
+        modifier = modifier, contentAlignment = Alignment.Center
     ) {
         when (painterState.value) {
 
@@ -54,8 +53,7 @@ fun AsyncImageView(
                 CircularProgressIndicator(
                     modifier = Modifier
                         .padding(8.dp)
-                        .size(50.dp)
-                        , strokeWidth = 2.dp
+                        .size(50.dp), strokeWidth = 2.dp
                 )
             }
 
@@ -64,7 +62,7 @@ fun AsyncImageView(
                     painter = painterResource(R.drawable.error),
                     contentDescription = contentDescription,
                     contentScale = contentScale,
-                    modifier = modifier.clip(shape)
+                    modifier = modifier
 
                 )
             }
@@ -74,7 +72,7 @@ fun AsyncImageView(
                     painter = painter,
                     contentDescription = contentDescription,
                     contentScale = contentScale,
-                    modifier = modifier.clip(shape)
+                    modifier = modifier
                 )
             }
         }

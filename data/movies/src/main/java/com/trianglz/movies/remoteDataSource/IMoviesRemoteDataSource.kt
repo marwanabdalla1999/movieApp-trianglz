@@ -1,6 +1,5 @@
 package com.trianglz.movies.remoteDataSource
 
-import androidx.paging.PagingSource
 import com.trianglz.movies.models.responses.MovieDto
 import com.trianglz.movies.models.responses.MoviesResponse
 
@@ -11,5 +10,5 @@ interface IMoviesRemoteDataSource {
     suspend fun searchForMovies(query: String,page: Int): MoviesResponse?
 
 
-    suspend fun getMoviesDetails()
+    suspend fun getMoviesDetails(movieId: Int) : MovieDto?
 }
