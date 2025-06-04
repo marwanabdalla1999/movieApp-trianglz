@@ -21,7 +21,6 @@ import com.trianglz.movies.remoteDataSource.IMoviesRemoteDataSource
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
-import kotlinx.coroutines.flow.flowOn
 import kotlinx.coroutines.flow.map
 import javax.inject.Inject
 
@@ -81,7 +80,7 @@ class MovieRepositoryImpl @Inject constructor(
             ), pagingSourceFactory = { moviesDoa.pagingSource() }
         ).flow.map { pagingData ->
                 pagingData.map { it.toDomain() }
-            }.flowOn(Dispatchers.IO)
+            }
     }
 
     /**
@@ -103,7 +102,7 @@ class MovieRepositoryImpl @Inject constructor(
         return Pager(
             config = PagingConfig(pageSize = PAGE_SIZE, enablePlaceholders = false),
             pagingSourceFactory = pagingSourceFactory
-        ).flow.flowOn(Dispatchers.IO)
+        ).flow
     }
 
     /**
@@ -118,7 +117,7 @@ class MovieRepositoryImpl @Inject constructor(
        val response = remoteMoviesDataSource.getMoviesDetails(movieId = movieId)
 
         response?.let { emit(it.toDomain()) }
-    }.flowOn(Dispatchers.IO)
+    }
 
 }
 

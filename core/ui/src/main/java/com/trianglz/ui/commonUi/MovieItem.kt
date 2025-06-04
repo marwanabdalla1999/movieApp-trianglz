@@ -54,7 +54,7 @@ fun MovieItem(movie: AppMovieModel, onClick: (Int) -> Unit) {
             )
             Spacer(modifier = Modifier.height(4.dp))
             Text(
-                text = movie.releaseDate,
+                text = movie.getFormattedReleaseDate(),
                 style = MaterialTheme.typography.bodyMedium,
                 color = Color.LightGray,
                 modifier = Modifier.fillMaxWidth().padding(horizontal = 8.dp),

@@ -15,7 +15,17 @@ import com.trianglz.movies.remoteDataSource.IMoviesRemoteDataSource
 import retrofit2.HttpException
 import java.io.IOException
 import javax.inject.Inject
-
+/**
+ * [MoviesMediator] is a [RemoteMediator] implementation responsible for
+ * synchronizing paginated movie data between a remote API and local Room cache.
+ *
+ * It supports three [LoadType]s: REFRESH, APPEND (for pagination), and ignores PREPEND.
+ *
+ * @property remoteDataSource The remote source to fetch paginated movies.
+ * @property moviesDao DAO to interact with the local movies Room table.
+ * @property remoteKeysDao DAO to manage pagination keys for each movie.
+ * @property withTransaction A transactional wrapper to perform DB operations safely.
+ */
 @OptIn(ExperimentalPagingApi::class)
 class MoviesMediator @Inject constructor(
     private val remoteDataSource: IMoviesRemoteDataSource,
@@ -24,6 +34,14 @@ class MoviesMediator @Inject constructor(
     private val withTransaction: suspend (suspend () -> Unit) -> Unit
 ) : RemoteMediator<Int, MovieEntity>() {
 
+    /**
+     * Called by Paging 3 to load data from the network and update the local database.
+     *
+     * @param loadType Indicates whether this is a REFRESH, PREPEND, or APPEND operation.
+     * @param state Provides information about the current paging state.
+     *
+     * @return [MediatorResult] indicating success or error.
+     */
     override suspend fun load(
         loadType: LoadType,
         state: PagingState<Int, MovieEntity>
@@ -45,6 +63,14 @@ class MoviesMediator @Inject constructor(
         }
     }
 
+    /**
+     * Determines which page number to load based on the [LoadType].
+     * - REFRESH always starts from page 1.
+     * - APPEND loads the next page using [MovieRemoteKeys].
+     * - PREPEND is ignored (returns null).
+     *
+     * @return The page number to load, or null if no further pages should be loaded.
+     */
     private suspend fun getPageToLoad(
         loadType: LoadType
     ): Int? {
@@ -60,6 +86,14 @@ class MoviesMediator @Inject constructor(
         }
     }
 
+    /**
+     * Persists movie data and remote keys to the local database within a transaction.
+     *
+     * @param loadType The current load type (used to determine whether to clear old data).
+     * @param page The page number being persisted.
+     * @param movies The list of [MovieDto]s fetched from the remote source.
+     * @param isEnd Whether this is the last page.
+     */
     private suspend fun persistToDb(
         loadType: LoadType,
         page: Int,

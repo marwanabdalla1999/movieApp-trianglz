@@ -1,4 +1,4 @@
-package com.trianglz.ui.theme
+package com.trianglz.moviesapp.ui.theme
 
 import androidx.compose.ui.graphics.Color
 
