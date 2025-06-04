@@ -25,7 +25,8 @@ fun MovieDetailsScreen(
     state: MoviesDetailsState,
     setEvents: (MoviesDetailsEvents) -> Unit,
     effects: Flow<MoviesDetailsEffects>,
-    modifier: Modifier = Modifier
+    modifier: Modifier = Modifier,
+    onBackClick: () -> Unit
 ) {
     val snackBarHostState = LocalAppSnackBarHostState.current
 
@@ -49,7 +50,7 @@ fun MovieDetailsScreen(
         modifier = modifier
             .fillMaxSize()
             .background(Color.Black)
-            .padding(16.dp)
+            .padding(horizontal = 16.dp, vertical = 8.dp)
     ) {
         when (state) {
             is MoviesDetailsState.Ideal,
@@ -65,7 +66,8 @@ fun MovieDetailsScreen(
                     modifier = Modifier
                         .fillMaxSize()
                         .verticalScroll(rememberScrollState()),
-                    movie = state.movie
+                    movie = state.movie,
+                    onBackClick = onBackClick
                 )
             }
         }

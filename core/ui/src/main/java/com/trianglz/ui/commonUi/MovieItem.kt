@@ -1,6 +1,6 @@
 package com.trianglz.ui.commonUi
 
-import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -19,11 +19,12 @@ import com.trianglz.ui.uiModels.AppMoviesModel
 import com.trianglz.ui.utils.getFullPosterUrl
 
 @Composable
-fun MovieItem(movie: AppMoviesModel) {
+fun MovieItem(movie: AppMoviesModel, onClick: (Int) -> Unit) {
     Card(
         modifier = Modifier
             .fillMaxWidth()
-            .padding(horizontal = 16.dp, vertical = 8.dp),
+            .padding(horizontal = 16.dp, vertical = 8.dp)
+            .clickable { onClick(movie.id) },
         shape = RoundedCornerShape(12.dp),
         elevation = CardDefaults.elevatedCardElevation(defaultElevation = 4.dp),
     ) {

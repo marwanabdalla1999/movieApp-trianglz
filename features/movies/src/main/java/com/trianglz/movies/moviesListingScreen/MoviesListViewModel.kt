@@ -10,11 +10,13 @@ import com.trianglz.movies.usecase.searchForMovieUseCase.ISearchForMoviesUseCase
 import com.trianglz.ui.base.BaseViewModel
 import com.trianglz.ui.uiModels.AppMoviesModel
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.distinctUntilChanged
 import kotlinx.coroutines.flow.flowOf
+import kotlinx.coroutines.flow.flowOn
 import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.launch
 import javax.inject.Inject
@@ -62,6 +64,7 @@ class MoviesListViewModel @Inject constructor(
                 .map { pagingData -> pagingData.map { it.toAppUiModel() } }
                 .distinctUntilChanged()
                 .cachedIn(viewModelScope)
+                .flowOn(Dispatchers.IO)
 
         val emptyPaging: Flow<PagingData<AppMoviesModel>> = flowOf(PagingData.empty())
 
@@ -96,6 +99,7 @@ class MoviesListViewModel @Inject constructor(
                     .map { pagingData -> pagingData.map { it.toAppUiModel() } }
                     .distinctUntilChanged()
                     .cachedIn(viewModelScope)
+                    .flowOn(Dispatchers.IO)
 
             val currentState = getState()
             if (currentState is MovieListState.Success) {

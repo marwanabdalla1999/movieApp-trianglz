@@ -23,7 +23,9 @@ fun NavigationHost(
             navController.navigate(MovieDetails(it))
         })
 
-        movieDetailsRoute()
+        movieDetailsRoute{
+            navController.popBackStack()
+        }
 
     }
 }

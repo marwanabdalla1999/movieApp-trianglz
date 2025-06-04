@@ -6,6 +6,6 @@ import kotlinx.coroutines.flow.Flow
 
 interface IGetPopularMoviesUseCase {
 
-    suspend operator fun invoke(): Flow<PagingData<MovieDomainModel>>
+     operator fun invoke(): Flow<PagingData<MovieDomainModel>>
 
 }

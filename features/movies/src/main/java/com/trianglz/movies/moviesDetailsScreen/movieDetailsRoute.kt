@@ -10,7 +10,7 @@ import androidx.navigation.toRoute
 import com.trianglz.ui.navigations.MovieDetails
 
 
-fun NavGraphBuilder.movieDetailsRoute() {
+fun NavGraphBuilder.movieDetailsRoute(onBackClick: () -> Unit) {
     composable<MovieDetails> { navBackStackEntry ->
         val movieId = navBackStackEntry.toRoute<MovieDetails>().movieId
         val viewModel: MovieDetailsViewModel = hiltViewModel()
@@ -21,7 +21,8 @@ fun NavGraphBuilder.movieDetailsRoute() {
             state = state,
             setEvents = viewModel::setEvent,
             effects = effects,
-            modifier = Modifier
+            modifier = Modifier,
+            onBackClick = onBackClick
         )
     }
 }

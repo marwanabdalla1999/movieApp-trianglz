@@ -57,7 +57,7 @@ class MoviesMediator @Inject constructor(
                 }
 
                 val entities = movies?.map { dto ->
-                    dto.toEntity(page = pageToLoad)
+                    dto.toEntity()
                 }
                 entities?.let { moviesDao.insertAll(it) }
 
