@@ -112,9 +112,8 @@ project-root/
 
 
 
-## 🚀 How to Run
-
-Clone the repo.
-Add your API key.
-Build and run the app.
+## 🚀 How to Run:
+    - Clone the repo.
+    - Add your API key.
+    - Build and run the app.
 
