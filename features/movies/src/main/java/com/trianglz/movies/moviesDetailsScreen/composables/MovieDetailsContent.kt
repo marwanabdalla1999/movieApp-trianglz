@@ -21,14 +21,14 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.trianglz.ui.commonUi.AsyncImageView
-import com.trianglz.ui.uiModels.AppMoviesModel
+import com.trianglz.ui.models.AppMovieModel
 import com.trianglz.ui.utils.getFullPosterUrl
 
 
 @Composable
 fun MovieDetailsContent(
     modifier: Modifier = Modifier,
-    movie: AppMoviesModel
+    movie: AppMovieModel
 ) {
     Column(
         modifier = modifier

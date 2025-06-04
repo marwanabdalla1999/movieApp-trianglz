@@ -1,22 +1,10 @@
 package com.trianglz.movies.moviesDetailsScreen
 
 import androidx.lifecycle.viewModelScope
-import androidx.paging.PagingData
-import androidx.paging.cachedIn
-import androidx.paging.map
 import com.trianglz.movies.mappers.toAppUiModel
 import com.trianglz.movies.usecase.movieDetailsUseCase.IMovieDetailsUseCase
-import com.trianglz.movies.usecase.popularMoviesUseCase.IGetPopularMoviesUseCase
-import com.trianglz.movies.usecase.searchForMovieUseCase.ISearchForMoviesUseCase
 import com.trianglz.ui.base.BaseViewModel
-import com.trianglz.ui.uiModels.AppMoviesModel
 import dagger.hilt.android.lifecycle.HiltViewModel
-import kotlinx.coroutines.Job
-import kotlinx.coroutines.delay
-import kotlinx.coroutines.flow.Flow
-import kotlinx.coroutines.flow.catch
-import kotlinx.coroutines.flow.distinctUntilChanged
-import kotlinx.coroutines.flow.flowOf
 import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.launch
 import javax.inject.Inject

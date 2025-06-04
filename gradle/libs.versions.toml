@@ -11,7 +11,6 @@ composeBom = "2025.05.01"
 appcompat = "1.7.0"
 material = "1.12.0"
 jetbrainsKotlinJvm = "2.0.21"
-pagingCommon = "3.3.6"
 retrofit = "2.11.0"
 room = "2.7.1"
 hilt = "2.56.2"
@@ -72,7 +71,7 @@ androidx-room-paging = { module = "androidx.room:room-paging", version.ref = "ro
 paging = {group = "androidx.paging", name = "paging-runtime-ktx", version.ref = "paging" }
 paging-test = { group = "androidx.paging", name = "paging-testing", version.ref = "paging" }
 pagination-compose = { module = "androidx.paging:paging-compose", version.ref = "paging" }
-androidx-paging-common = { group = "androidx.paging", name = "paging-common", version.ref = "paging" }
+paging-common = { group = "androidx.paging", name = "paging-common", version.ref = "paging" }
 
 
 hilt-navigation-compose = { group = "androidx.hilt", name = "hilt-navigation-compose", version.ref = "hiltNavigationCompose" }

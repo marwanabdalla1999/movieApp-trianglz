@@ -52,7 +52,7 @@ dependencies {
     implementation(project(":domain:movies"))
 
     testImplementation(libs.bundles.unit.testing)
-    testImplementation(libs.androidx.paging.common)
+    testImplementation(libs.paging.common)
     testImplementation(libs.paging.test)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)

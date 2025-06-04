@@ -3,13 +3,13 @@ package com.trianglz.movies.moviesDetailsScreen
 import com.trianglz.ui.base.ViewEvent
 import com.trianglz.ui.base.ViewSideEffect
 import com.trianglz.ui.base.ViewState
-import com.trianglz.ui.uiModels.AppMoviesModel
+import com.trianglz.ui.models.AppMovieModel
 
 
 sealed class MoviesDetailsState:ViewState {
     data object Ideal: MoviesDetailsState()
     data object Loading: MoviesDetailsState()
-    data class SuccessMovieLoaded(val movie: AppMoviesModel): MoviesDetailsState()
+    data class SuccessMovieLoaded(val movie: AppMovieModel): MoviesDetailsState()
 }
 
 sealed class MoviesDetailsEvents : ViewEvent {
