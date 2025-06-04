@@ -23,7 +23,7 @@ fun NavigationHost(
             navController.navigate(MovieDetails(it))
         })
 
-        movieDetailsRoute()
+        movieDetailsRoute(onBackClick = navController::navigateUp)
 
     }
 }

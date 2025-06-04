@@ -40,8 +40,7 @@ class MovieDetailsViewModelTest {
         overview = "A test overview",
         poster = "/test.jpg",
         releaseDate = "2025-01-01",
-        voteAverage = 7.8,
-        voteCount = 12,
+        voteAverage = 7.8
     )
 
     @Before

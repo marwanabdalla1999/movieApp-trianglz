@@ -11,10 +11,9 @@ import androidx.compose.material3.SnackbarHost
 import androidx.compose.material3.SnackbarHostState
 import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.runtime.remember
-import androidx.compose.runtime.staticCompositionLocalOf
 import androidx.compose.ui.Modifier
 import androidx.navigation.compose.rememberNavController
-import com.trianglz.moviesapp.ui.theme.MoviesAppTheme
+import com.trianglz.ui.theme.MoviesAppTheme
 import com.trianglz.ui.commonUi.LocalAppSnackBarHostState
 import dagger.hilt.android.AndroidEntryPoint
 
