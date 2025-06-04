@@ -8,7 +8,7 @@ import com.trianglz.movies.mappers.toAppUiModel
 import com.trianglz.movies.usecase.popularMoviesUseCase.IGetPopularMoviesUseCase
 import com.trianglz.movies.usecase.searchForMovieUseCase.ISearchForMoviesUseCase
 import com.trianglz.ui.base.BaseViewModel
-import com.trianglz.ui.models.AppMovieModel
+import com.trianglz.ui.uiModels.AppMoviesModel
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.delay
@@ -57,13 +57,13 @@ class MoviesListViewModel @Inject constructor(
      * with an empty search list.
      */
     private fun loadMovies() {
-        val moviesFlow: Flow<PagingData<AppMovieModel>> =
+        val moviesFlow: Flow<PagingData<AppMoviesModel>> =
             getMoviesUseCase()
                 .map { pagingData -> pagingData.map { it.toAppUiModel() } }
                 .distinctUntilChanged()
                 .cachedIn(viewModelScope)
 
-        val emptyPaging: Flow<PagingData<AppMovieModel>> = flowOf(PagingData.empty())
+        val emptyPaging: Flow<PagingData<AppMoviesModel>> = flowOf(PagingData.empty())
 
         setState {
             MovieListState.Success(
@@ -91,7 +91,7 @@ class MoviesListViewModel @Inject constructor(
         searchJob = viewModelScope.launch {
             delay(500) // debounce
 
-            val newSearchFlow: Flow<PagingData<AppMovieModel>> =
+            val newSearchFlow: Flow<PagingData<AppMoviesModel>> =
                 searchForMoviesUseCase(query)
                     .map { pagingData -> pagingData.map { it.toAppUiModel() } }
                     .distinctUntilChanged()

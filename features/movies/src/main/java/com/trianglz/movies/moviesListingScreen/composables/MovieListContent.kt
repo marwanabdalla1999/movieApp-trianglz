@@ -18,14 +18,14 @@ import androidx.paging.compose.LazyPagingItems
 import com.core_ui.commonUi.SearchView
 import com.trianglz.movies.moviesListingScreen.MovieListEvents
 import com.trianglz.ui.commonUi.LocalAppSnackBarHostState
-import com.trianglz.ui.models.AppMovieModel
+import com.trianglz.ui.uiModels.AppMoviesModel
 
 @Composable
 fun MovieListContent(
     modifier: Modifier,
     query: String,
     setEvents: (MovieListEvents) -> Unit,
-    movies: LazyPagingItems<AppMovieModel>,
+    movies: LazyPagingItems<AppMoviesModel>,
     isLoading: Boolean,
     errorMessage: String?,
     isSearchEmpty: Boolean,
