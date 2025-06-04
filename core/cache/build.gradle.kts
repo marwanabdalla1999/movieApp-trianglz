@@ -7,10 +7,10 @@ plugins {
 
 android {
     namespace = "com.trianglz.cache"
-    compileSdk = 34
+    compileSdk = VersionManger.COMPILE_SDK
 
     defaultConfig {
-        minSdk = 29
+        minSdk = VersionManger.MIN_SDK
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles("consumer-rules.pro")

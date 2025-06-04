@@ -9,14 +9,14 @@ plugins {
 
 android {
     namespace = "com.trianglz.moviesapp"
-    compileSdk = 35
+    compileSdk = VersionManger.COMPILE_SDK
 
     defaultConfig {
         applicationId = "com.trianglz.moviesapp"
-        minSdk = 29
-        targetSdk = 34
-        versionCode = 1
-        versionName = "1.0"
+        minSdk = VersionManger.MIN_SDK
+        targetSdk = VersionManger.TARGET_SDK
+        versionCode = VersionManger.VERSION_CODE
+        versionName = VersionManger.VERSION_NAME
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
@@ -61,21 +61,15 @@ dependencies {
     debugImplementation(libs.androidx.ui.tooling)
     debugImplementation(libs.androidx.ui.test.manifest)
 
-    implementation(project(":features:movies"))
-    implementation(project(":core:ui"))
+    implementation(project(Modules.Features.MOVIES))
+    implementation(project(Modules.Core.UI))
 
-    implementation(project(":domain:movies")) {
-        exclude(group = "androidx.paging", module = "paging-common-jvm")
-    }
-    implementation(project(":data:movies"))
+    implementation(project(Modules.Domain.MOVIES))
 
-    implementation(project(":core:network"))
-    implementation(project(":core:cache"))
+    implementation(project(Modules.Data.MOVIES))
 
-    // Room for local storage
-    implementation(libs.room.runtime)
-    ksp(libs.room.compiler)
-    implementation(libs.room.ktx)
+
+
 
     // Hilt for dependency injection
     implementation(libs.hilt.android)
@@ -83,7 +77,6 @@ dependencies {
 
     // Coroutines
     implementation(libs.kotlinx.coroutines.core)
-    testImplementation(kotlin("test"))
 }
 ktlint {
     version.set(libs.versions.ktlint.get())

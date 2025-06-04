@@ -7,10 +7,10 @@ plugins {
 
 android {
     namespace = "com.trianglz.movies"
-    compileSdk = 34
+    compileSdk = VersionManger.COMPILE_SDK
 
     defaultConfig {
-        minSdk = 29
+        minSdk = VersionManger.MIN_SDK
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles("consumer-rules.pro")
@@ -46,10 +46,10 @@ dependencies {
     implementation(libs.androidx.room.paging)
     implementation(libs.hilt.android)
     ksp(libs.hilt.compiler)
-    implementation(project(":core:network"))
-    implementation(project(":core:cache"))
+    implementation(project(Modules.Core.NETWORK))
+    implementation(project(Modules.Core.CACHE))
 
-    implementation(project(":domain:movies"))
+    implementation(project(Modules.Domain.MOVIES))
 
     testImplementation(libs.bundles.unit.testing)
     testImplementation(libs.paging.common)

@@ -8,10 +8,10 @@ plugins {
 
 android {
     namespace = "com.trianglz.movies"
-    compileSdk = 34
+    compileSdk = VersionManger.COMPILE_SDK
 
     defaultConfig {
-        minSdk = 29
+        minSdk = VersionManger.MIN_SDK
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles("consumer-rules.pro")
@@ -46,8 +46,8 @@ dependencies {
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
     testImplementation(libs.bundles.unit.testing)
-    implementation(project(":core:ui"))
-    implementation(project(":domain:movies"))
+    implementation(project(Modules.Core.UI))
+    implementation(project(Modules.Domain.MOVIES))
 
 
     implementation(libs.hilt.navigation.compose)
