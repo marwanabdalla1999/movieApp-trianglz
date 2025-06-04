@@ -18,14 +18,14 @@ fun MoviesListing(
     state: LazyListState = rememberLazyListState(),
     setEvents: (MovieListEvents) -> Unit
 ) {
-    LazyColumn (
+    LazyColumn(
         modifier = Modifier.fillMaxSize(), state = state
     ) {
         items(
             count = movies.itemCount
         ) { index ->
             movies[index]?.let { movie ->
-                MovieItem(movie){
+                MovieItem(movie) {
                     setEvents(MovieListEvents.MovieClicked(it))
                 }
             }

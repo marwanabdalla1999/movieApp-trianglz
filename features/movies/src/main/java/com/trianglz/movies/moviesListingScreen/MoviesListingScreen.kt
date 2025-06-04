@@ -3,10 +3,12 @@ package com.trianglz.movies.moviesListingScreen
 
 import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.paging.LoadState
 import androidx.paging.compose.collectAsLazyPagingItems
 import com.trianglz.movies.moviesListingScreen.composables.MovieListContent
 import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.flowOf
 
 @Composable
 fun MovieListScreen(
@@ -53,7 +55,6 @@ fun MovieListScreen(
                 }
             }
 
-
             MovieListContent(
                 modifier = modifier,
                 query = state.query,
@@ -69,7 +70,12 @@ fun MovieListScreen(
 
     }
 
+}
 
+@Preview
+@Composable
+fun MovieListScreenPreview() {
+    MovieListScreen(state = MovieListState.Ideal, setEvents = {}, effects = flowOf())
 }
 
 

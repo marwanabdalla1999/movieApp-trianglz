@@ -7,7 +7,6 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.CircularProgressIndicator
-import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.ui.Alignment
@@ -38,7 +37,12 @@ fun MovieListContent(
         }
     }
 
-    Column (modifier = modifier.fillMaxSize().background(Color.Black).padding(top = 10.dp)) {
+    Column(
+        modifier = modifier
+            .fillMaxSize()
+            .background(Color.Black)
+            .padding(top = 10.dp)
+    ) {
         SearchView(
             query = query,
             modifier = Modifier
@@ -46,21 +50,25 @@ fun MovieListContent(
                 .padding(horizontal = 10.dp),
             onQueryChanged = { query ->
                 setEvents(MovieListEvents.SearchMovies(query))
-            }
-        )
+            })
 
         Box(modifier = modifier.fillMaxSize()) {
             when {
                 isLoading -> {
                     CircularProgressIndicator(modifier = Modifier.align(Alignment.Center))
                 }
+
                 isSearchEmpty -> {
-                    EmptySearchState(modifier = Modifier.align(Alignment.Center))
+                    EmptySearchState(
+                        modifier = Modifier
+                            .align(Alignment.Center)
+                            .padding(16.dp)
+                    )
                 }
+
                 else -> {
                     MoviesListing(
-                        movies = movies,
-                        setEvents = setEvents
+                        movies = movies, setEvents = setEvents
                     )
                 }
             }
@@ -68,10 +76,5 @@ fun MovieListContent(
     }
 }
 
-@Composable
-fun EmptySearchState(modifier: Modifier = Modifier) {
-    Text(
-        text = "No results found",
-        modifier = modifier.padding(16.dp)
-    )
-}
+
+

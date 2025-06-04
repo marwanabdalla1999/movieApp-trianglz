@@ -1,6 +1,5 @@
 package com.trianglz.ui.commonUi
 
-import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -16,9 +15,11 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextOverflow
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.trianglz.ui.models.AppMovieModel
 import com.trianglz.ui.utils.getFullPosterUrl
+import com.trianglz.ui.utils.singleClick
 
 @Composable
 fun MovieItem(movie: AppMovieModel, onClick: (Int) -> Unit) {
@@ -26,7 +27,7 @@ fun MovieItem(movie: AppMovieModel, onClick: (Int) -> Unit) {
         modifier = Modifier
             .fillMaxWidth()
             .padding(horizontal = 16.dp, vertical = 8.dp)
-            .clickable { onClick(movie.id) },
+            .singleClick { onClick(movie.id) },
         shape = RoundedCornerShape(12.dp),
         elevation = CardDefaults.elevatedCardElevation(defaultElevation = 4.dp),
         colors = CardDefaults.cardColors(containerColor = Color.DarkGray)
@@ -65,4 +66,18 @@ fun MovieItem(movie: AppMovieModel, onClick: (Int) -> Unit) {
 
         }
     }
+}
+
+@Preview
+@Composable
+fun MovieItemPreview(){
+    MovieItem(movie = AppMovieModel(
+        id = 1,
+        title = "",
+        overview = "",
+        poster = "",
+        releaseDate = "",
+        voteAverage = 0.0
+    ), onClick = {})
+
 }
