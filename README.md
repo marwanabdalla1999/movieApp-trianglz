@@ -93,23 +93,27 @@ RemoteMediator triggers API fetch if cache is empty or invalid.
 API response is stored in Room using database.withTransaction {}.
 UI collects from Pager.flow and displays paged data.
 
+## Project Structure
+
 project-root/
 │
 ├── core/
-│ ├── cache/ # Room DB, DAOs, entities
-│ ├── network/ # Retrofit API services and network utils
-│ └── ui/ # Shared UI components (e.g., AsyncImageView)
+│   ├── cache/       # Room DB, DAOs, entities
+│   ├── network/     # Retrofit API services and network utils
+│   └── ui/          # Shared UI components (e.g., AsyncImageView)
 │
 ├── domain/
-│ └── movie/ # Use cases and repository interfaces
+│   └── movie/       # Use cases and repository interfaces
 │
 ├── data/
-│ └── movie/ # Remote & local data sources, paging, repo implementation
+│   └── movie/       # Remote & local data sources, paging, repo implementation
 │
-├── features/
-│ └── movie/
-│ ├── movieList/ # Movie listing screen with search
-│ └── movieDetails/ # Movie details screen
+└── features/
+    └── movie/
+        ├── movieList/      # Movie listing screen with search
+        └── movieDetails/   # Movie details screen
+
+
 
 🚀 How to Run
 
