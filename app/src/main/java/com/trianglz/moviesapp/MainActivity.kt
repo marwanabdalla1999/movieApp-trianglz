@@ -13,10 +13,9 @@ import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.navigation.compose.rememberNavController
-import com.trianglz.ui.theme.MoviesAppTheme
 import com.trianglz.ui.commonUi.LocalAppSnackBarHostState
+import com.trianglz.ui.theme.MoviesAppTheme
 import dagger.hilt.android.AndroidEntryPoint
-
 
 @AndroidEntryPoint
 class MainActivity : ComponentActivity() {
@@ -34,13 +33,11 @@ class MainActivity : ComponentActivity() {
                     ) { innerPadding ->
                         NavigationHost(
                             modifier = Modifier.padding(innerPadding),
-                            navController = navController
+                            navController = navController,
                         )
                     }
                 }
-
             }
         }
     }
 }
-
