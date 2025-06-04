@@ -5,7 +5,7 @@ import com.trianglz.movies.models.MovieDomainModel
 import com.trianglz.movies.models.responses.MovieDto
 
 
-fun MovieDto.toEntity(page: Int): MovieEntity = MovieEntity(
+fun MovieDto.toEntity(): MovieEntity = MovieEntity(
     id = id,
     title = title,
     posterPath = posterPath?:"",
@@ -15,8 +15,7 @@ fun MovieDto.toEntity(page: Int): MovieEntity = MovieEntity(
     voteCount = voteCount,
     popularity = popularity,
     adult = adult,
-    originalLanguage = originalLanguage,
-    page = page
+    originalLanguage = originalLanguage
 )
 
 fun MovieDto.toDomain(): MovieDomainModel = MovieDomainModel(
