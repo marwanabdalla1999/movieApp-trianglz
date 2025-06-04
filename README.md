@@ -69,6 +69,9 @@ data class AppMovieModel(
     val overview: String,
     val voteAverage: Double
 )
+
+
+
 🔌 Tech Stack
 UI: Jetpack Compose
 Architecture: MVI + Clean Architecture
