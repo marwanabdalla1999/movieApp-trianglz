@@ -9,8 +9,9 @@ object NetworkConstants {
 
     }
     object Paging {
-         const val PAGE_SIZE = 20
-        const val PREFETCH_DISTANCE = 40
+         const val PAGE_SIZE = 10
+        const val PREFETCH_DISTANCE = 30
+        const val INITIAL_LOAD_SIZE = 20
 
     }
 }

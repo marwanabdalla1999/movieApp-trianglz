@@ -1,8 +1,9 @@
 package com.trianglz.movies.remoteDataSource
 
 import com.trianglz.corenetwork.NetworkHelper
+import com.trianglz.movies.models.responses.MovieDto
 import com.trianglz.movies.models.responses.MoviesResponse
-import com.trianglz.movies.remoteDataSource.apiServices.MovieApiService
+import com.trianglz.movies.apiServices.MovieApiService
 import javax.inject.Inject
 
 class MoviesRemoteDataSourceImpl @Inject constructor(private val apiService: MovieApiService) :
@@ -20,7 +21,8 @@ class MoviesRemoteDataSourceImpl @Inject constructor(private val apiService: Mov
         }
 
 
-    override suspend fun getMoviesDetails() {
+    override suspend fun getMoviesDetails(movieId: Int): MovieDto? = NetworkHelper.executeCall {
+        apiService.getMovieDetails(movieId = movieId)
     }
 
 }

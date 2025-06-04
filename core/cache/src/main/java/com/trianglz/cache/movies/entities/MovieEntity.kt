@@ -14,8 +14,7 @@ data class MovieEntity(
     val voteCount: Int,
     val popularity: Double,
     val adult: Boolean,
-    val originalLanguage: String,
-    val page: Int
+    val originalLanguage: String
 )
 
 @Entity(tableName = "movies_remote_keys")

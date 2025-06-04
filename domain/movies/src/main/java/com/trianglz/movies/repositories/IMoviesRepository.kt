@@ -9,4 +9,6 @@ interface IMoviesRepository {
 
    suspend  fun searchForMovies(query: String): Flow<PagingData<MovieDomainModel>>
 
+   suspend fun getMovieDetails(movieId: Int): Flow<MovieDomainModel>
+
 } 
