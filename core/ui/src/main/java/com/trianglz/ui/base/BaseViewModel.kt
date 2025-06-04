@@ -68,6 +68,7 @@ abstract class BaseViewModel<
         viewModelScope.launch { _effect.send(effectValue) }
     }
 
+
     fun <T> Flow<T>.launchAndCollectResult(
         onSuccess: (T) -> Unit = {},
         onError: (Throwable) -> Unit = {},

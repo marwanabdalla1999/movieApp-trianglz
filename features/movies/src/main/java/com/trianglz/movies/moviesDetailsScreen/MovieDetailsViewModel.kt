@@ -39,6 +39,8 @@ class MovieDetailsViewModel @Inject constructor(
 
         }
     }
+
+
     override fun setInitialState(): MoviesDetailsState = MoviesDetailsState.Ideal
 
     override fun handleEvents(event: MoviesDetailsEvents) {
